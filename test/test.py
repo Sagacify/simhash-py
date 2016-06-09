@@ -197,7 +197,7 @@ class TestSimhash(unittest.TestCase):
         # the corpus
         inputs = range(1000)
         self.corpus.insert_bulk(inputs)
-        self.assertEqual(self.corpus.hashes(), inputs)
+        self.assertEqual(self.corpus.hashes(), list(inputs))
 
 if __name__ == '__main__':
     unittest.main()

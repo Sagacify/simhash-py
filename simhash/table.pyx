@@ -37,7 +37,8 @@ cpdef PyHash(s):
         raise MemoryError()
     try:
         for i in xrange(ntokens):
-            tokens[i] = ( tokens[i].encode('utf-8') if utf8 else tokens[i] ) + '\0'
+            nullChar = '\0'
+            tokens[i] = ( tokens[i].encode('utf-8') if utf8 else tokens[i] ) + nullChar.encode('utf-8')
             ctokens[i] = tokens[i]
         ctokens[ntokens] = NULL
 
@@ -186,8 +187,8 @@ cdef class PyCorpus:
         perms = []
         for i in range(num_blocks):
             # Figure out how many (and which) bits will go into this block.
-            start = ( i    * 64) / num_blocks
-            end   = ((i+1) * 64) / num_blocks
+            start = int(( i    * 64) / num_blocks)
+            end   = int(((i+1) * 64) / num_blocks)
             num = 0
             for j in range(start, end):
                 num = num | (1 << j)
