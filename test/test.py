@@ -1,6 +1,11 @@
 #! /usr/bin/env python
 
 import unittest
+import sys
+import os.path
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 import simhash
 
 

@@ -37,8 +37,7 @@ cpdef PyHash(s):
         raise MemoryError()
     try:
         for i in xrange(ntokens):
-            nullChar = '\0'
-            tokens[i] = ( tokens[i].encode('utf-8') if utf8 else tokens[i] ) + nullChar.encode('utf-8')
+            tokens[i] = ( tokens[i].encode('utf-8') if utf8 else tokens[i] ) + b'\0'
             ctokens[i] = tokens[i]
         ctokens[ntokens] = NULL
 
