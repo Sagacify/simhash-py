@@ -1,15 +1,18 @@
 .PHONY: test
 
 clean:
-	sudo python setup.py clean
+	python3 setup.py clean
 	rm simhash/table.cpp
 
 install:
-	sudo python setup.py install
+	python3 setup.py install
+
+develop:
+	python3 setup.py develop
 
 uninstall:
-	sudo pip uninstall simhash -y
+	pip3 uninstall simhash -y
 
 test:
-	python test/test.py
+	python3 test/test.py
 

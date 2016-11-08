@@ -1,6 +1,11 @@
 #! /usr/bin/env python
 
 import unittest
+import sys
+import os.path
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 import simhash
 
 
@@ -197,7 +202,7 @@ class TestSimhash(unittest.TestCase):
         # the corpus
         inputs = range(1000)
         self.corpus.insert_bulk(inputs)
-        self.assertEqual(self.corpus.hashes(), inputs)
+        self.assertEqual(self.corpus.hashes(), list(inputs))
 
 if __name__ == '__main__':
     unittest.main()
